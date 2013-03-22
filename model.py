@@ -29,11 +29,11 @@ def list_comment(parent):
     return output
 
 def list_post(page):
-    perpage = 20
+    perpage = 10
     offset = (page - 1) * perpage
     output = '<ul>'
     posts = db.select('posts', what = 'id, title, content, datetime(created) as created, user_id', where = 'parent = 0', offset=offset, limit=perpage, order = 'id DESC')
-    postcount = db.query("SELECT COUNT(*) AS count FROM posts")[0]
+    postcount = db.query("SELECT COUNT(*) AS count FROM posts WHERE parent = 0")[0]
     pages = postcount.count / perpage
     if postcount.count % perpage > 0:
         pages += 1

@@ -1,4 +1,12 @@
 $def with (html, pages, page)
+$code:
+	grace = 5
+	range = grace * 2
+	start = page - grace if page - grace > 0 else 1
+	end = start + range
+	if end > pages:
+		end = pages
+		start = end - range if end - range > 0 else 1
 <div id="nav-bar">
 <ul>
 <li id="navbar-blog"><a href="/add">发帖</a></li>
@@ -7,12 +15,14 @@ $def with (html, pages, page)
 <div id="content">
 $:html
 <p>
-$if pages > 1:
-    $if page > 1:
-        <a href="/page/$(page-1)">上一页</a>
-    $for i in range(1, pages + 1):
-        <a class="page" href="/page/$i">$i</a>
-    $if page < pages:
-        <a href="/page/$(page+1)">下一页</a>
+$if start > 1:
+	<a class="page" href="/page/1">1</a> ...
+$for i in xrange(start, end+1):
+	$if i == page:
+		<span class="page">$i</span>
+	$else:
+		<a class="page" href="/page/$i">$i</a>
+$if end < pages:
+	... <a class="page" href="/page/$pages">$pages</a>
 </p>
 </div>

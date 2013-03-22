@@ -226,3 +226,13 @@ a:hover{
 	font-size:12px;
 	font-weight:normal;
 }
+
+.page {
+   color: #ccc;
+   border: 1px solid #eee;
+	padding: 2px 4px;
+}
+.page {
+   border: 1px solid #eee;
+	padding: 2px 4px;
+}
