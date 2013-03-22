@@ -15,6 +15,7 @@ $code:
 <div id="content">
 $:html
 <p>
+<div id="pager">
 $if start > 1:
 	<a class="page" href="/page/1">1</a> ...
 $for i in xrange(start, end+1):
@@ -25,4 +26,5 @@ $for i in xrange(start, end+1):
 $if end < pages:
 	... <a class="page" href="/page/$pages">$pages</a>
 </p>
+</div>
 </div>

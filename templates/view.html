@@ -1,5 +1,6 @@
 $def with (page, user, t, f)
 <div id="content">
+<div id="paragraph">
 <h1 class="title">$page.title</h1>
 <p class="date">提交者：$user.username 于 $page.created</p>
 $:make_html(page.content)
@@ -12,4 +13,5 @@ $if t:
 <form method="POST">
 	$:f.render()
 </form>
+</div>
 </div>
